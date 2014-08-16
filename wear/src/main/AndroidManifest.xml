@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fr.nicolaspomepuy.androidwearcrashreport.wear">
+    <uses-feature android:name="android.hardware.type.watch" />
+    <application>
+
+    </application>
+
+</manifest>
