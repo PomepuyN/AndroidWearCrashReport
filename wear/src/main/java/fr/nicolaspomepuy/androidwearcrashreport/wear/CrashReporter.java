@@ -30,15 +30,16 @@ public class CrashReporter {
 
     private CrashReporter(Context context) {
         this.context = context;
-
-        //Init the handler
-        androidDefaultUEH = Thread.getDefaultUncaughtExceptionHandler();
-        Thread.setDefaultUncaughtExceptionHandler(handler);
-
         //Init the google api client
         googleApiClient = new GoogleApiClient.Builder(context)
                 .addApi(Wearable.API)
                 .build();
+    }
+
+    public void start() {
+        //Init the handler
+        androidDefaultUEH = Thread.getDefaultUncaughtExceptionHandler();
+        Thread.setDefaultUncaughtExceptionHandler(handler);
 
         //See if there is a crash to send
         File file = new File(context.getFilesDir() + "/crash.data");
@@ -108,6 +109,7 @@ public class CrashReporter {
 
     /**
      * Sends the exception to the handheld device
+     *
      * @param throwable the {@code Throwable} to send
      */
     public void sendException(Throwable throwable) {

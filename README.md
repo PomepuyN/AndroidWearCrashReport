@@ -23,11 +23,6 @@ dependencies {
 
 To work, these lines should be added int the onCreate method of your ```Application``` or main ```Activity``` class
 
-### In your wear app
-```
-CrashReporter.getInstance(this);
-```
-
 ### In your mobile app
 ```
 CrashReport.getInstance(this).crashReport.setOnCrashListener(new CrashReport.IOnCrashListener() {
@@ -36,6 +31,17 @@ CrashReport.getInstance(this).crashReport.setOnCrashListener(new CrashReport.IOn
         // Manage the crash
     }
 });
+```
+
+### In your wear app
+```
+CrashReporter.getInstance(this).start();
+```
+
+You can also send caught exceptions
+
+```
+CrashReporter.getInstance(this).sendException(yourException);
 ```
 
 ## License
