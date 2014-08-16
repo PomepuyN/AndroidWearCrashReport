@@ -8,14 +8,14 @@ A lightweight non intrusive app rate reminder for Android
 ### In your wear app
 ```
 dependencies {
-    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-wear:0.1'
+    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-wear:0.1@aar'
 }
 ```
 
 ### In your mobile app
 ```
 dependencies {
-    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-mobile:0.1'
+    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-mobile:0.1@aar'
 }
 ```
 
