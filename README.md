@@ -1,7 +1,6 @@
 AndroidWearCrashReport
 ======================
-A lightweight non intrusive app rate reminder for Android
-
+Allows you to retrieve exceptions of an Android Wear app in your handheld's one. It is particularly useful if you're using a Crash Reporting library or if you implemented a way to retrieve crashes.
 
 ## Download
 
