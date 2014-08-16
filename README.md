@@ -25,7 +25,7 @@ To work, these lines should be added int the onCreate method of your ```Applicat
 
 ### In your mobile app
 ```
-CrashReport.getInstance(this).crashReport.setOnCrashListener(new CrashReport.IOnCrashListener() {
+CrashReport.getInstance(this).setOnCrashListener(new CrashReport.IOnCrashListener() {
     @Override
     public void onCrashReceived(Throwable throwable) {
         // Manage the crash
