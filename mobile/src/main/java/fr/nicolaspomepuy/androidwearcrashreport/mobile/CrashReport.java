@@ -82,7 +82,13 @@ public class CrashReport implements DataApi.DataListener, GoogleApiClient.Connec
 
                 //Send it with the listener
                 if (throwable != null && onCrashListener != null) {
-                    onCrashListener.onCrashReceived(throwable);
+                    CrashInfo crashInfo = new CrashInfo.Builder(throwable)
+                            .fingerprint(dataMapItem.getDataMap().getString("fingerprint"))
+                            .manufacturer(dataMapItem.getDataMap().getString("manufacturer"))
+                            .model(dataMapItem.getDataMap().getString("model"))
+                            .product(dataMapItem.getDataMap().getString("product"))
+                            .build();
+                    onCrashListener.onCrashReceived(crashInfo);
                 }
             }
         }
@@ -94,7 +100,7 @@ public class CrashReport implements DataApi.DataListener, GoogleApiClient.Connec
 
     //Listener interface
     public interface IOnCrashListener {
-        void onCrashReceived(Throwable throwable);
+        void onCrashReceived(CrashInfo crashInfo);
     }
 
 }

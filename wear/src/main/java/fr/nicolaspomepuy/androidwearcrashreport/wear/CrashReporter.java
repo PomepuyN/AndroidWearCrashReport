@@ -1,7 +1,7 @@
 package fr.nicolaspomepuy.androidwearcrashreport.wear;
 
 import android.content.Context;
-import android.util.Log;
+import android.os.Build;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -73,7 +73,6 @@ public class CrashReporter {
         public void uncaughtException(Thread thread, Throwable ex) {
             final byte[] data = Utils.serializeObject(ex);
             final String serializedThrowableString = new String(data);
-            Log.d(TAG, "uncaughtException: " + serializedThrowableString);
 
             //Write crash to a file in case of the handler is not able to send the crash now
             DataOutputStream out = null;
@@ -119,8 +118,15 @@ public class CrashReporter {
         // Send the Throwable
         PutDataMapRequest dataMap = PutDataMapRequest.create(MessagingPathes.EXCEPTION + System.currentTimeMillis());
         dataMap.getDataMap().putByteArray("ex", Utils.serializeObject(throwable));
+        // Add a bit of information on the Wear Device to pass a long with the exception
+        dataMap.getDataMap().putString("board", Build.BOARD);
+        dataMap.getDataMap().putString("fingerprint", Build.FINGERPRINT);
+        dataMap.getDataMap().putString("model", Build.MODEL);
+        dataMap.getDataMap().putString("manufacturer", Build.MANUFACTURER);
+        dataMap.getDataMap().putString("product", Build.PRODUCT);
         PutDataRequest request = dataMap.asPutDataRequest();
         PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi.putDataItem(getGoogleApiClient(context), request);
+
         pendingResult.setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
             @Override
             public void onResult(DataApi.DataItemResult dataItemResult) {
