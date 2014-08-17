@@ -2,19 +2,20 @@ AndroidWearCrashReport
 ======================
 Allows you to retrieve exceptions of an Android Wear app in your handheld's one. It is particularly useful if you're using a Crash Reporting library or if you implemented a way to retrieve crashes.
 
+
 ## Download
 
 ### In your wear app
 ```
 dependencies {
-    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-wear:0.1@aar'
+    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-wear:0.2@aar'
 }
 ```
 
 ### In your mobile app
 ```
 dependencies {
-    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-mobile:0.1@aar'
+    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-mobile:0.2@aar'
 }
 ```
 
@@ -26,7 +27,7 @@ To work, these lines should be added int the onCreate method of your ```Applicat
 ```
 CrashReport.getInstance(this).setOnCrashListener(new CrashReport.IOnCrashListener() {
     @Override
-    public void onCrashReceived(Throwable throwable) {
+    public void onCrashReceived(CrashInfo crashInfo) {
         // Manage the crash
     }
 });
