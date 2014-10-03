@@ -24,7 +24,7 @@ dependencies {
 To work, these lines should be added int the onCreate method of your ```Application``` or main ```Activity``` class
 
 ### In your mobile app
-```
+```java
 CrashReport.getInstance(this).setOnCrashListener(new CrashReport.IOnCrashListener() {
     @Override
     public void onCrashReceived(CrashInfo crashInfo) {
@@ -33,14 +33,20 @@ CrashReport.getInstance(this).setOnCrashListener(new CrashReport.IOnCrashListene
 });
 ```
 
-### In your wear app
+You can also send the Report to the Play Store by calling this method:
+
+```java
+CrashReport.getInstance(this).reportToPlayStore(this);
 ```
+
+### In your wear app
+```java
 CrashReporter.getInstance(this).start();
 ```
 
 You can also send caught exceptions
 
-```
+```java
 CrashReporter.getInstance(this).sendException(yourException);
 ```
 

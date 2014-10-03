@@ -28,4 +28,16 @@ public class Utils {
             return null;
         }
     }
+
+    public static String getStackTrace(Throwable e) {
+        if (null == e) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder(e.getMessage()).append("\n");
+        for (int i = 0; i < e.getStackTrace().length; i++) {
+            sb.append(e.getStackTrace()[i]).append("\n");
+        }
+
+        return sb.toString();
+    }
 }
