@@ -8,14 +8,14 @@ Allows you to retrieve exceptions of an Android Wear app in your handheld's one.
 ### In your wear app
 ```
 dependencies {
-    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-wear:0.2@aar'
+    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-wear:0.3@aar'
 }
 ```
 
 ### In your mobile app
 ```
 dependencies {
-    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-mobile:0.2@aar'
+    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-mobile:0.3@aar'
 }
 ```
 
@@ -49,6 +49,9 @@ You can also send caught exceptions
 ```java
 CrashReporter.getInstance(this).sendException(yourException);
 ```
+## Thanks
+
+Special thanks to Aladin Q. for his help on the Play Store report
 
 ## License
 
