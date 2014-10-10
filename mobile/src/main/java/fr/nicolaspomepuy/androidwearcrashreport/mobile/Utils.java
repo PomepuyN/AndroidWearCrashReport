@@ -33,9 +33,20 @@ public class Utils {
         if (null == e) {
             return "";
         }
-        StringBuilder sb = new StringBuilder(e.getMessage()).append("\n");
-        for (int i = 0; i < e.getStackTrace().length; i++) {
-            sb.append(e.getStackTrace()[i]).append("\n");
+        StringBuilder sb = new StringBuilder();
+        if (e.getMessage() != null) {
+            sb.append(e.getMessage()).append("\n");
+        }
+
+        if (e.getStackTrace() != null) {
+            for (int i = 0; i < e.getStackTrace().length; i++) {
+                sb.append("    ").append(e.getStackTrace()[i]).append("\n");
+            }
+        }
+
+        if (e.getCause() != null) {
+            sb.append("Caused by: ").append(e.getCause().getClass().getName()).append(":\n");
+            sb.append(getStackTrace(e.getCause()));
         }
 
         return sb.toString();

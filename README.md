@@ -8,14 +8,14 @@ Allows you to retrieve exceptions of an Android Wear app in your handheld's one.
 ### In your wear app
 ```
 dependencies {
-    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-wear:0.3@aar'
+    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-wear:0.4@aar'
 }
 ```
 
 ### In your mobile app
 ```
 dependencies {
-    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-mobile:0.3@aar'
+    compile 'fr.nicolaspomepuy.androidwearcrashreport:crashreport-mobile:0.4@aar'
 }
 ```
 
