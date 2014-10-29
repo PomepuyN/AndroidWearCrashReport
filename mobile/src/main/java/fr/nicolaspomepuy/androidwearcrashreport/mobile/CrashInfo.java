@@ -10,6 +10,8 @@ public class CrashInfo {
     private String model;
     private String manufacturer;
     private String product;
+    private final int versionCode;
+    private final String versionName;
 
 
     private CrashInfo(Builder builder) {
@@ -18,6 +20,8 @@ public class CrashInfo {
         this.model = builder.model;
         this.manufacturer = builder.manufacturer;
         this.product = builder.product;
+        this.versionCode = builder.versionCode;
+        this.versionName = builder.versionName;
     }
 
     public static class Builder {
@@ -26,6 +30,8 @@ public class CrashInfo {
         private String model;
         private String manufacturer;
         private String product;
+        private String versionName;
+        private int versionCode;
 
         public Builder(Throwable throwable) {
             this.throwable = throwable;
@@ -48,6 +54,16 @@ public class CrashInfo {
 
         public Builder product(String product) {
             this.product = product;
+            return this;
+        }
+
+        public Builder versionCode(int version) {
+            this.versionCode = version;
+            return this;
+        }
+
+        public Builder versionName(String version) {
+            this.versionName = version;
             return this;
         }
 
@@ -78,8 +94,16 @@ public class CrashInfo {
         return product;
     }
 
+    public int getVersionCode() {
+        return versionCode;
+    }
+
+    public String getVersionName() {
+        return versionName;
+    }
+
     @Override
     public String toString() {
-        return manufacturer + " - " + model;
+        return manufacturer + " - " + model + "(" + versionCode + ")";
     }
 }

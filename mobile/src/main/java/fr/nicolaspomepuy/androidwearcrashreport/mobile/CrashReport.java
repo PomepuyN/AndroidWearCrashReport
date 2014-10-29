@@ -97,6 +97,8 @@ public class CrashReport implements DataApi.DataListener, GoogleApiClient.Connec
                                 .manufacturer(dataMapItem.getDataMap().getString("manufacturer"))
                                 .model(dataMapItem.getDataMap().getString("model"))
                                 .product(dataMapItem.getDataMap().getString("product"))
+                                .versionCode(dataMapItem.getDataMap().getInt("versionCode"))
+                                .versionName(dataMapItem.getDataMap().getString("versionName"))
                                 .build();
                         onCrashListener.onCrashReceived(currentCrashInfo);
                     }

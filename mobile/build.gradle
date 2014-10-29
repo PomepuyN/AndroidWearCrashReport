@@ -3,7 +3,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-version '0.4'
+version '0.5'
 artifact_id = 'crashreport-mobile'
 
 android {
@@ -14,8 +14,8 @@ android {
         applicationId "fr.nicolaspomepuy.androidwearcrashreport"
         minSdkVersion 9
         targetSdkVersion 20
-        versionCode 3
-        versionName "0.4"
+        versionCode 5
+        versionName "0.5"
     }
     buildTypes {
         release {
@@ -38,7 +38,7 @@ android.libraryVariants
 publishing {
     publications {
         maven(MavenPublication) {
-            artifact 'build/outputs/aar/mobile-0.4.aar'
+            artifact 'build/outputs/aar/mobile-0.5.aar'
             artifactId 'crashreport-mobile'
             groupId 'fr.nicolaspomepuy.androidwearcrashreport'
         }

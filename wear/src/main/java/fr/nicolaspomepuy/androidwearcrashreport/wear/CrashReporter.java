@@ -1,6 +1,8 @@
 package fr.nicolaspomepuy.androidwearcrashreport.wear;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -115,6 +117,17 @@ public class CrashReporter {
         //Connect the Google API Client
         googleApiClient.connect();
 
+        // Collection version info
+        PackageInfo pinfo;
+        int versionCode = 0;
+        String versionName = "";
+        try {
+            pinfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            versionCode = pinfo.versionCode;
+            versionName = pinfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+
         // Send the Throwable
         PutDataMapRequest dataMap = PutDataMapRequest.create(MessagingPathes.EXCEPTION + System.currentTimeMillis());
         dataMap.getDataMap().putByteArray("ex", Utils.serializeObject(throwable));
@@ -124,6 +137,8 @@ public class CrashReporter {
         dataMap.getDataMap().putString("model", Build.MODEL);
         dataMap.getDataMap().putString("manufacturer", Build.MANUFACTURER);
         dataMap.getDataMap().putString("product", Build.PRODUCT);
+        dataMap.getDataMap().putString("versionName", versionName);
+        dataMap.getDataMap().putInt("versionCode", versionCode);
         PutDataRequest request = dataMap.asPutDataRequest();
         PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi.putDataItem(getGoogleApiClient(context), request);
 
